@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "944074355474",
+    "project_id": "lab8-dbacc",
+    "storage_bucket": "lab8-dbacc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944074355474:android:3a56d02d798788680539cb",
+        "android_client_info": {
+          "package_name": "com.example.laptrinhandroid_lab8_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944074355474-rdiujuolvlbfuikf7ka6bb5f06jjicb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaenvhUfMTs2yEvVMHF6xXAuf2oHqcDBs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944074355474-rdiujuolvlbfuikf7ka6bb5f06jjicb6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
