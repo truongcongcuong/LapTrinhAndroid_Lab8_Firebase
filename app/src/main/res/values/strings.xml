@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">LapTrinhAndroid_Lab8_Firebase</string>
+    <string name="sign_in">Sign in</string>
+    <string name="register">Register here</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="not_have_account">Do not have an account?</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="enter_email">Enter your email...</string>
+    <string name="empty_email">Vui lòng nhập email của bạn...</string>
+    <string name="send_email_successfully">Email đã được gửi , kiểm tra hòm thư của bạn...</string>
+    <string name="send_email_failed">Lỗi, Email chưa liên kết với tài khoản , vui lòng thử lại ....</string>
+
 </resources>

@@ -1,8 +1,10 @@
 package com.example.laptrinhandroid_lab8_firebase;
 
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Acticity_Login extends AppCompatActivity {
     EditText edt_sign_in_email,edt_sign_in_password;
-    Button btn_sign_in_action,btn_sign_in_registry;
+    Button btn_sign_in_action,btn_sign_in_registry,btn_sign_in_forgot_password;
     FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +33,47 @@ public class Acticity_Login extends AppCompatActivity {
         edt_sign_in_password = findViewById(R.id.edt_sign_in_password);
         btn_sign_in_action = findViewById(R.id.btn_sign_in_action);
         btn_sign_in_registry = findViewById(R.id.btn_sign_in_registry);
+        btn_sign_in_forgot_password = findViewById(R.id.btn_sign_in_forgot_password);
 
 
         edt_sign_in_email.setHint("Email");
         edt_sign_in_password.setHint("Password");
         btn_sign_in_action.setText("SIGN IN");
         btn_sign_in_registry.setText("REGISTRY");
+        btn_sign_in_forgot_password.setText(R.string.forgot_password);
 
         btn_sign_in_registry.setOnClickListener(v->startActivity(new Intent(Acticity_Login.this,Registry_Activity.class)));
 
+        btn_sign_in_forgot_password.setOnClickListener(v->{
+            EditText edt_email = new EditText(Acticity_Login.this);
+
+            AlertDialog dialog = new AlertDialog.Builder(Acticity_Login.this)
+                    .setTitle(R.string.forgot_password)
+                    .setMessage(R.string.enter_email)
+                    .setView(edt_email)
+                    .setPositiveButton("Send Email",(dialog1, which) -> {
+                        String email_resp = edt_email.getText().toString().trim();
+                        Toast.makeText(Acticity_Login.this,"email : "+email_resp,Toast.LENGTH_SHORT).show();
+                        if(!TextUtils.isEmpty(email_resp)){
+                            auth.sendPasswordResetEmail(email_resp)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful())
+                                                Toast.makeText(Acticity_Login.this,R.string.send_email_successfully,Toast.LENGTH_SHORT).show();
+                                            else
+                                                Toast.makeText(Acticity_Login.this,R.string.send_email_failed,Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                        else
+                            Toast.makeText(Acticity_Login.this,R.string.empty_email,Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Cancel",null)
+                    .create();
+            dialog.show();
+
+        });
 
         btn_sign_in_action.setOnClickListener(v->{
             String email = edt_sign_in_email.getText().toString();
